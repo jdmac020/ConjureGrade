@@ -27,6 +27,18 @@ namespace ConjureGrade.Tests
         }
 
         [Fact]
+        public void GetSingleScoreResult_ZeroDividedByZero_ResultsAre0And0()
+        {
+            var testClass = Create_ScoreWizard();
+            var testScore = Create_ScoreResult_DoubleZero();
+
+            var result = testClass.GetSingleScoreResult(testScore.PointsEarned, testScore.PointsPossible);
+
+            result.RawGradeResult.ShouldBe(0);
+            result.FriendlyGradeResult.ShouldBe(0);
+        }
+
+        [Fact]
         public void GetSingleScoreResult_ZeroEarnedPoints_ResultsAre0And0()
         {
             var testClass = Create_ScoreWizard();

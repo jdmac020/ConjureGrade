@@ -50,5 +50,10 @@ namespace ConjureGrade.Tests.Factories
         {
             return new ScoreResult { PointsEarned = -5, PointsPossible = 10 };
         }
+
+        public static ScoreResult Create_ScoreResult_DoubleZero()
+        {
+            return new ScoreResult { PointsEarned = 0, PointsPossible = 0 };
+        }
     }
 }

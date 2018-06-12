@@ -6,5 +6,6 @@
         public double PointsPossible { get; set; }
         public double RawGradeResult { get; set; }
         public double FriendlyGradeResult { get; set; }
+        public bool IsPlaceholder { get; set; }
     }
 }
