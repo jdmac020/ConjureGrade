@@ -8,7 +8,7 @@ using ConjureGrade.Wizards;
 using Xunit;
 using Shouldly;
 using static ConjureGrade.Tests.Factories.WizardFactory;
-using static ConjureGrade.Tests.Factories.GradeResultFactory;
+using static ConjureGrade.Tests.Factories.ScoreResultFactory;
 
 namespace ConjureGrade.Tests
 {

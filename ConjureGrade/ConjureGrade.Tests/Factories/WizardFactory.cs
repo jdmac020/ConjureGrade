@@ -8,5 +8,10 @@ namespace ConjureGrade.Tests.Factories
         {
             return new ScoreWizard();
         }
+
+        public static IEvaluationWizard Create_EvaluationWizard()
+        {
+            return new EvaluationWizard();
+        }
     }
 }
