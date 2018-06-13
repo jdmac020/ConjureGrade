@@ -6,6 +6,7 @@ namespace ConjureGrade.Tests.Factories
     public static class ScoreResultFactory
     {
         
+        
         public static List<ScoreResult> Create_ScoreResultList_MixedResults()
         {
             return new List<ScoreResult>
