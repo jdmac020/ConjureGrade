@@ -9,17 +9,19 @@ namespace ConjureGrade.Wizards
 {
     public class EvaluationWizard : IEvaluationWizard
     {
-        public EvaluationResult UpdateOverAllGrade(EvaluationResult evaluation)
+        public EvaluationResult Evaluation { get; set; }
+
+        public void UpdateOverAllGrade()
         {
             throw new NotImplementedException();
         }
 
-        public EvaluationResult UpdateToDateResults(EvaluationResult evaluation)
+        public void UpdateToDateGrade()
         {
             throw new NotImplementedException();
         }
 
-        public EvaluationResult UpdateAllResults(EvaluationResult evaluation)
+        public void UpdateAllGrades()
         {
             throw new NotImplementedException();
         }
