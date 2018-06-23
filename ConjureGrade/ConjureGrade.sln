@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConjureGrade", "ConjureGrade\ConjureGrade.csproj", "{A311CB25-2E50-4EC3-9195-A096644B82B9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConjureGrade.Tests", "ConjureGrade.Tests\ConjureGrade.Tests.csproj", "{E196C86A-1297-4008-9690-E8FEE7FF7F17}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A311CB25-2E50-4EC3-9195-A096644B82B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A311CB25-2E50-4EC3-9195-A096644B82B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A311CB25-2E50-4EC3-9195-A096644B82B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E196C86A-1297-4008-9690-E8FEE7FF7F17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E196C86A-1297-4008-9690-E8FEE7FF7F17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E196C86A-1297-4008-9690-E8FEE7FF7F17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E196C86A-1297-4008-9690-E8FEE7FF7F17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
