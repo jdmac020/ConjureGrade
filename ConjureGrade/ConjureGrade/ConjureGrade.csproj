@@ -42,9 +42,12 @@
   <ItemGroup>
     <Compile Include="Apprentice\MathApprentice.cs" />
     <Compile Include="Exceptions\BadSpellException.cs" />
+    <Compile Include="Spells\CourseResult.cs" />
     <Compile Include="Spells\EvaluationResult.cs" />
     <Compile Include="Spells\ScoreResult.cs" />
+    <Compile Include="Wizards\CourseWizard.cs" />
     <Compile Include="Wizards\EvaluationWizard.cs" />
+    <Compile Include="Wizards\ICourseWizard.cs" />
     <Compile Include="Wizards\IEvaluationWizard.cs" />
     <Compile Include="Wizards\IScoreWizard.cs" />
     <Compile Include="Wizards\ScoreWizard.cs" />
