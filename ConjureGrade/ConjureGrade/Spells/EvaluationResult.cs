@@ -8,7 +8,8 @@ namespace ConjureGrade.Spells
 {
     public class EvaluationResult
     {
-        
+        public bool Weighted { get; set; }
+        public double WeightAmount { get; set; }
         public bool DropLowest { get; set; }
         public int DropLowestCount { get; set; }
         public int TotalScoreCount { get; set; }

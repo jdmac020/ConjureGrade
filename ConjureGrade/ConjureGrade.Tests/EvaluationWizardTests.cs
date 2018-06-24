@@ -111,22 +111,22 @@ namespace ConjureGrade.Tests
         }
 
         [Fact]
-        public void UpdateOverallGrade_300Possible280EarnedDropOne_Results50()
+        public void UpdateOverallGrade_300Possible280EarnedDropOne_Results67()
         {
             var testClass = Create_EvaluationWizard();
-            testClass.Evaluation = Create_3OutOf4_DropLowest_100and50();
+            testClass.Evaluation = Create_3OutOf4_DropLowest_100and67();
 
             testClass.UpdateOverAllGrade();
 
-            testClass.Evaluation.GradeOverallRaw.ShouldBe(.5);
-            testClass.Evaluation.GradeOverallFriendly.ShouldBe(50);
+            testClass.Evaluation.GradeOverallRaw.ShouldBe(.67);
+            testClass.Evaluation.GradeOverallFriendly.ShouldBe(67);
         }
 
         [Fact]
         public void UpdateGradeToDate_300Possible280EarnedDropOne_Results100()
         {
             var testClass = Create_EvaluationWizard();
-            testClass.Evaluation = Create_3OutOf4_DropLowest_100and50();
+            testClass.Evaluation = Create_3OutOf4_DropLowest_100and67();
 
             testClass.UpdateToDateGrade();
 
@@ -159,22 +159,22 @@ namespace ConjureGrade.Tests
         }
 
         [Fact]
-        public void UpdateOverAllGrade_3OutOf4DropOne_Results45()
+        public void UpdateOverAllGrade_3OutOf4DropOne_Results60()
         {
             var testClass = Create_EvaluationWizard();
-            testClass.Evaluation = Create_3OutOf4_DropLowest_90and45();
+            testClass.Evaluation = Create_3OutOf4_DropLowest_90and60();
 
             testClass.UpdateOverAllGrade();
 
-            testClass.Evaluation.GradeOverallRaw.ShouldBe(.45);
-            testClass.Evaluation.GradeOverallFriendly.ShouldBe(45);
+            testClass.Evaluation.GradeOverallRaw.ShouldBe(.6);
+            testClass.Evaluation.GradeOverallFriendly.ShouldBe(60);
         }
 
         [Fact]
         public void UpdateToDateGrade_3OutOf4DropOne_Results90()
         {
             var testClass = Create_EvaluationWizard();
-            testClass.Evaluation = Create_3OutOf4_DropLowest_90and45();
+            testClass.Evaluation = Create_3OutOf4_DropLowest_90and60();
 
             testClass.UpdateToDateGrade();
 
@@ -183,22 +183,22 @@ namespace ConjureGrade.Tests
         }
 
         [Fact]
-        public void UpdateOverAllGrade_3OutOf4DropOne_Results50()
+        public void UpdateOverAllGrade_3OutOf4DropOne_Results67()
         {
             var testClass = Create_EvaluationWizard();
-            testClass.Evaluation = Create_3OutOf4_DropLowest_100and50();
+            testClass.Evaluation = Create_3OutOf4_DropLowest_100and67();
 
             testClass.UpdateOverAllGrade();
 
-            testClass.Evaluation.GradeOverallRaw.ShouldBe(.5);
-            testClass.Evaluation.GradeOverallFriendly.ShouldBe(50);
+            testClass.Evaluation.GradeOverallRaw.ShouldBe(.67);
+            testClass.Evaluation.GradeOverallFriendly.ShouldBe(67);
         }
 
         [Fact]
         public void UpdateToDateGrade_3OutOf4DropOne_Results100()
         {
             var testClass = Create_EvaluationWizard();
-            testClass.Evaluation = Create_3OutOf4_DropLowest_100and50();
+            testClass.Evaluation = Create_3OutOf4_DropLowest_100and67();
 
             testClass.UpdateToDateGrade();
 
@@ -214,8 +214,8 @@ namespace ConjureGrade.Tests
 
             testClass.UpdateOverAllGrade();
 
-            testClass.Evaluation.GradeOverallRaw.ShouldBe(.9);
-            testClass.Evaluation.GradeOverallFriendly.ShouldBe(90);
+            testClass.Evaluation.GradeOverallRaw.ShouldBe(.93);
+            testClass.Evaluation.GradeOverallFriendly.ShouldBe(93);
         }
 
         [Fact]
@@ -226,8 +226,8 @@ namespace ConjureGrade.Tests
 
             testClass.UpdateToDateGrade();
 
-            testClass.Evaluation.GradeToDateRaw.ShouldBe(.9);
-            testClass.Evaluation.GradeToDateFriendly.ShouldBe(90);
+            testClass.Evaluation.GradeToDateRaw.ShouldBe(.93);
+            testClass.Evaluation.GradeToDateFriendly.ShouldBe(93);
         }
 
         [Fact]
