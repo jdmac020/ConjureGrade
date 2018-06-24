@@ -9,8 +9,10 @@ namespace ConjureGrade.Wizards
 {
     public interface IEvaluationWizard
     {
-        EvaluationResult UpdateOverAllGrade(EvaluationResult evaluation);
-        EvaluationResult UpdateToDateResults(EvaluationResult evaluation);
-        EvaluationResult UpdateAllResults(EvaluationResult evaluation);
+        EvaluationResult Evaluation { get; set; }
+
+        void UpdateOverAllGrade();
+        void UpdateToDateGrade();
+        void UpdateAllGrades();
     }
 }

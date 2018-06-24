@@ -62,6 +62,7 @@
     <Compile Include="Factories\EvaluationResultFactory.cs" />
     <Compile Include="Factories\ScoreResultFactory.cs" />
     <Compile Include="Factories\WizardFactory.cs" />
+    <Compile Include="EvaluationWizardTests.cs" />
     <Compile Include="ScoreWizardTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

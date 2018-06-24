@@ -8,7 +8,8 @@ namespace ConjureGrade.Spells
 {
     public class EvaluationResult
     {
-        
+        public bool Weighted { get; set; }
+        public double WeightAmount { get; set; }
         public bool DropLowest { get; set; }
         public int DropLowestCount { get; set; }
         public int TotalScoreCount { get; set; }
@@ -16,11 +17,11 @@ namespace ConjureGrade.Spells
         public List<ScoreResult> Scores { get; set; }
         public double PointsPossibleToDate { get; set; } // based on just the scores available
         public double PointsEarnedToDate { get; set; } 
-        public double ResultToDateRaw { get; set; }
-        public double ResultToDateFriendly { get; set; }
+        public double GradeToDateRaw { get; set; }
+        public double GradeToDateFriendly { get; set; }
         public double PointsPossibleOverall { get; set; } // based on (TotalScoreCount - DropLowestCount) * PointValuePerScore
         public double PointsEarnedOverall { get; set; }
-        public double ResultOverallRaw { get; set; }
-        public double ResultOverallFriendly { get; set; }
+        public double GradeOverallRaw { get; set; }
+        public double GradeOverallFriendly { get; set; }
     }
 }

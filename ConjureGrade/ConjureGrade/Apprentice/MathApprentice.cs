@@ -5,7 +5,7 @@ namespace ConjureGrade.Apprentice
 {
     public static class MathApprentice
     {
-        public static double CalculateRawPercentage(double earnedPoints, double possiblePoints)
+        public static double CalculateRawPercentage(double earnedPoints, double possiblePoints, int precisionInDecimalPlaces = 2)
         {
 
             if (possiblePoints < 0 || earnedPoints < 0)
@@ -21,7 +21,7 @@ namespace ConjureGrade.Apprentice
             }
             else
             {
-                return rawResult;
+                return Math.Round(rawResult, precisionInDecimalPlaces);
             }
         }
 
