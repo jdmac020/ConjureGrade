@@ -43,6 +43,8 @@
     <Compile Include="Apprentice\MathApprentice.cs" />
     <Compile Include="Exceptions\BadSpellException.cs" />
     <Compile Include="Spells\CourseResult.cs" />
+    <Compile Include="Spells\ICourseResult.cs" />
+    <Compile Include="Spells\WeightedCourseResult.cs" />
     <Compile Include="Spells\EvaluationResult.cs" />
     <Compile Include="Spells\ScoreResult.cs" />
     <Compile Include="Wizards\CourseWizard.cs" />

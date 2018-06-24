@@ -10,6 +10,74 @@ namespace ConjureGrade.Tests.Factories
 {
     public static class EvaluationResultFactory
     {
+
+        /// <summary>
+        /// 150/300 points
+        /// </summary>
+        /// <returns></returns>
+        public static List<EvaluationResult> CreateList_FailingCourse_NonWeight()
+        {
+            return new List<EvaluationResult>
+            {
+                CreateSimple_NonWeighted(50),
+                CreateSimple_NonWeighted(50),
+                CreateSimple_NonWeighted(50)
+            };
+        }
+
+        /// <summary>
+        /// 240/300 points
+        /// </summary>
+        /// <returns></returns>
+        public static List<EvaluationResult> CreateList_BCourse_NonWeight()
+        {
+            return new List<EvaluationResult>
+            {
+                CreateSimple_NonWeighted(80),
+                CreateSimple_NonWeighted(80),
+                CreateSimple_NonWeighted(80)
+            };
+        }
+
+        /// <summary>
+        /// 32/19/23/.1
+        /// </summary>
+        /// <returns></returns>
+        public static List<EvaluationResult> CreateList_WeightedCourse()
+        {
+            return new List<EvaluationResult>
+            {
+                CreateSimple_Weighted(40,80),
+                CreateSimple_Weighted(25,75),
+                CreateSimple_Weighted(25,90),
+                CreateSimple_Weighted(10,100)
+            };
+        }
+
+        public static EvaluationResult CreateSimple_NonWeighted(double percentAmount)
+        {
+            return new EvaluationResult
+            {
+                PointsEarned = percentAmount,
+                PointsPossibleToDate = 100,
+                PointsPossibleOverall = 100,
+                Weighted = false
+            };
+        }
+        
+
+        public static EvaluationResult CreateSimple_Weighted(double percentGrade, double weightAmount)
+        {
+            return new EvaluationResult
+            {
+                PointsEarned = percentGrade,
+                PointsPossibleToDate = 100,
+                PointsPossibleOverall = 100,
+                Weighted = true,
+                WeightAmount = weightAmount
+            };
+        }
+
         // 3 test scores, no drop, three fill
         public static EvaluationResult Create_ThreeTests_NoDrop_100()
         {
