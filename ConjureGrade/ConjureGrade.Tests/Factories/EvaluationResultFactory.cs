@@ -148,7 +148,7 @@ namespace ConjureGrade.Tests.Factories
             };
         }
 
-        public static EvaluationResult Create_3OutOf4_DropLowest_100()
+        public static EvaluationResult Create_3OutOf4_DropLowest_100and50()
         {
             var scoreList = new List<ScoreResult>
             {
@@ -168,7 +168,7 @@ namespace ConjureGrade.Tests.Factories
             };
         }
 
-        public static EvaluationResult Create_3OutOf4_DropLowest_90()
+        public static EvaluationResult Create_3OutOf4_DropLowest_90and45()
         {
             var scoreList = new List<ScoreResult>
             {
@@ -195,6 +195,27 @@ namespace ConjureGrade.Tests.Factories
                 Create_ScoreResult_OneHundredPercent(),
                 Create_ScoreResult_OneHundredPercent(),
                 Create_ScoreResult_EightyPercent(),
+                Create_ScoreResult_ZeroPercent(),
+            };
+
+            return new EvaluationResult
+            {
+                DropLowest = true,
+                DropLowestCount = 1,
+                PointValuePerScore = 100,
+                TotalScoreCount = 4,
+                Scores = scoreList,
+
+            };
+        }
+
+        public static EvaluationResult Create_4Tests_DropLowestTwo_100()
+        {
+            var scoreList = new List<ScoreResult>
+            {
+                Create_ScoreResult_OneHundredPercent(),
+                Create_ScoreResult_EightyPercent(),
+                Create_ScoreResult_OneHundredPercent(),
                 Create_ScoreResult_ZeroPercent(),
             };
 
