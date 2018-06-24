@@ -71,7 +71,7 @@ namespace ConjureGrade.Tests
             testClass.UpdateToDateGrade();
 
             testClass.Evaluation.GradeToDateRaw.ShouldBe(1);
-            testClass.Evaluation.GradeOverallFriendly.ShouldBe(100);
+            testClass.Evaluation.GradeToDateFriendly.ShouldBe(100);
         }
 
         [Fact]
@@ -95,7 +95,7 @@ namespace ConjureGrade.Tests
             testClass.UpdateToDateGrade();
 
             testClass.Evaluation.GradeToDateRaw.ShouldBe(.9);
-            testClass.Evaluation.GradeOverallFriendly.ShouldBe(90);
+            testClass.Evaluation.GradeToDateFriendly.ShouldBe(90);
         }
 
         [Fact]

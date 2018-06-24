@@ -22,7 +22,7 @@ namespace ConjureGrade.Tests.Factories
 
             return new EvaluationResult
             {
-                PointValuePerScore = 100,
+                PointValuePerScore = 10,
                 TotalScoreCount = 3,
                 Scores = scoreList,
 
@@ -40,7 +40,7 @@ namespace ConjureGrade.Tests.Factories
 
             return new EvaluationResult
             {
-                PointValuePerScore = 100,
+                PointValuePerScore = 10,
                 TotalScoreCount = 3,
                 Scores = scoreList
             };
@@ -57,7 +57,7 @@ namespace ConjureGrade.Tests.Factories
 
             return new EvaluationResult
             {
-                PointValuePerScore = 100,
+                PointValuePerScore = 10,
                 TotalScoreCount = 3,
                 Scores = scoreList,
 
@@ -78,7 +78,7 @@ namespace ConjureGrade.Tests.Factories
             {
                 DropLowest = true,
                 DropLowestCount = 1,
-                PointValuePerScore = 100,
+                PointValuePerScore = 10,
                 TotalScoreCount = 4,
                 Scores = scoreList,
 
@@ -99,7 +99,7 @@ namespace ConjureGrade.Tests.Factories
 
             return new EvaluationResult
             {
-                PointValuePerScore = 100,
+                PointValuePerScore = 10,
                 TotalScoreCount = 4,
                 Scores = scoreList,
 
@@ -120,7 +120,7 @@ namespace ConjureGrade.Tests.Factories
 
             return new EvaluationResult
             {
-                PointValuePerScore = 100,
+                PointValuePerScore = 10,
                 TotalScoreCount = 4,
                 Scores = scoreList,
 
@@ -141,7 +141,7 @@ namespace ConjureGrade.Tests.Factories
             {
                 DropLowest = true,
                 DropLowestCount = 1,
-                PointValuePerScore = 100,
+                PointValuePerScore = 10,
                 TotalScoreCount = 4,
                 Scores = scoreList,
 
@@ -161,7 +161,7 @@ namespace ConjureGrade.Tests.Factories
             {
                 DropLowest = true,
                 DropLowestCount = 1,
-                PointValuePerScore = 100,
+                PointValuePerScore = 10,
                 TotalScoreCount = 4,
                 Scores = scoreList,
 
@@ -202,7 +202,7 @@ namespace ConjureGrade.Tests.Factories
             {
                 DropLowest = true,
                 DropLowestCount = 1,
-                PointValuePerScore = 100,
+                PointValuePerScore = 10,
                 TotalScoreCount = 4,
                 Scores = scoreList,
 
@@ -223,7 +223,7 @@ namespace ConjureGrade.Tests.Factories
             {
                 DropLowest = true,
                 DropLowestCount = 1,
-                PointValuePerScore = 100,
+                PointValuePerScore = 10,
                 TotalScoreCount = 4,
                 Scores = scoreList,
 
