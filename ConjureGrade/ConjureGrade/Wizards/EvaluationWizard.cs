@@ -13,6 +13,15 @@ namespace ConjureGrade.Wizards
     {
         public EvaluationResult Evaluation { get; set; }
 
+        public void UpdateAllGrades()
+        {
+            if (Evaluation is null)
+                throw new BadSpellException("There Is No Evaluation Property Set.");
+
+            UpdateOverAllGrade();
+            UpdateToDateGrade();
+        }
+
         public void UpdateOverAllGrade()
         {
             if (Evaluation is null)
@@ -22,37 +31,18 @@ namespace ConjureGrade.Wizards
             {
                 Evaluation.PointsPossibleOverall = Evaluation.TotalScoreCount * Evaluation.PointValuePerScore;
 
-                Evaluation.PointsEarnedOverall = Evaluation.Scores.Sum(s => s.PointsEarned);
-
-                Evaluation.GradeOverallRaw =
-                    CalculateRawPercentage(Evaluation.PointsEarnedOverall, Evaluation.PointsPossibleOverall);
-
-                Evaluation.GradeOverallFriendly = GetFriendlyPercent(Evaluation.GradeOverallRaw);
+                Evaluation.PointsEarnedOverall = GetPointsEarnedAllScores();
             }
             else
             {
                 Evaluation.PointsPossibleOverall = (Evaluation.TotalScoreCount - Evaluation.DropLowestCount) * Evaluation.PointValuePerScore;
 
-                var adjustedScoreList = Evaluation.Scores;
-
-                for (int i = 0; i < Evaluation.DropLowestCount; i++)
-                {
-                    var lowestScore = Evaluation.Scores.Min(s => s.PointsEarned);
-
-                    var scoreToRemove = Evaluation.Scores.Where(s => s.PointsEarned == lowestScore).FirstOrDefault();
-                    
-                    adjustedScoreList.Remove(scoreToRemove);
-                }
-                
-                Evaluation.PointsEarnedOverall = adjustedScoreList.Sum(s => s.PointsEarned);
-
-                Evaluation.GradeOverallRaw =
-                    CalculateRawPercentage(Evaluation.PointsEarnedOverall, Evaluation.PointsPossibleOverall);
-
-                Evaluation.GradeOverallFriendly = GetFriendlyPercent(Evaluation.GradeOverallRaw);
+                Evaluation.PointsEarnedOverall = GetPointsEarnedAfterDroppingLowest();
             }
-        }
 
+            SetGradeOverall();
+        }
+        
         public void UpdateToDateGrade()
         {
             if (Evaluation is null)
@@ -62,40 +52,55 @@ namespace ConjureGrade.Wizards
             {
                 Evaluation.PointsPossibleToDate = Evaluation.Scores.Count * Evaluation.PointValuePerScore;
 
-                Evaluation.PointsEarnedToDate = Evaluation.Scores.Sum(s => s.PointsEarned);
-
-                Evaluation.GradeToDateRaw =
-                    CalculateRawPercentage(Evaluation.PointsEarnedToDate, Evaluation.PointsPossibleToDate);
-
-                Evaluation.GradeToDateFriendly = GetFriendlyPercent(Evaluation.GradeToDateRaw);
+                Evaluation.PointsEarnedToDate = GetPointsEarnedAllScores();
             }
             else
             {
                 Evaluation.PointsPossibleToDate = (Evaluation.Scores.Count - Evaluation.DropLowestCount) * Evaluation.PointValuePerScore;
 
-                var adjustedScoreList = Evaluation.Scores;
-
-                for (int i = 0; i < Evaluation.DropLowestCount; i++)
-                {
-                    var lowestScore = Evaluation.Scores.Min(s => s.PointsEarned);
-
-                    var scoreToRemove = Evaluation.Scores.Where(s => s.PointsEarned == lowestScore).FirstOrDefault();
-                    
-                    adjustedScoreList.Remove(scoreToRemove);
-                }
-
-                Evaluation.PointsEarnedToDate = adjustedScoreList.Sum(s => s.PointsEarned);
-
-                Evaluation.GradeToDateRaw =
-                    CalculateRawPercentage(Evaluation.PointsEarnedToDate, Evaluation.PointsPossibleToDate);
-
-                Evaluation.GradeToDateFriendly = GetFriendlyPercent(Evaluation.GradeToDateRaw);
+                Evaluation.PointsEarnedToDate = GetPointsEarnedAfterDroppingLowest();
             }
+
+            SetGradeToDate();
         }
 
-        public void UpdateAllGrades()
+        protected double GetPointsEarnedAllScores()
         {
-            throw new NotImplementedException();
+            return Evaluation.Scores.Sum(s => s.PointsEarned);
         }
+
+        protected void SetGradeOverall()
+        {
+            Evaluation.GradeOverallRaw =
+                CalculateRawPercentage(Evaluation.PointsEarnedOverall, Evaluation.PointsPossibleOverall);
+
+            Evaluation.GradeOverallFriendly = GetFriendlyPercent(Evaluation.GradeOverallRaw);
+        }
+
+        protected void SetGradeToDate()
+        {
+            Evaluation.GradeToDateRaw =
+                CalculateRawPercentage(Evaluation.PointsEarnedToDate, Evaluation.PointsPossibleToDate);
+
+            Evaluation.GradeToDateFriendly = GetFriendlyPercent(Evaluation.GradeToDateRaw);
+        }
+
+        protected double GetPointsEarnedAfterDroppingLowest()
+        {
+            var adjustedScoreList = Evaluation.Scores;
+
+            for (int i = 0; i < Evaluation.DropLowestCount; i++)
+            {
+                var lowestScore = Evaluation.Scores.Min(s => s.PointsEarned);
+
+                var scoreToRemove = Evaluation.Scores.Where(s => s.PointsEarned == lowestScore).FirstOrDefault();
+
+                adjustedScoreList.Remove(scoreToRemove);
+            }
+
+            return adjustedScoreList.Sum(s => s.PointsEarned);
+            
+        }
+        
     }
 }
