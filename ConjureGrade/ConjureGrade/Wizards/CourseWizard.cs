@@ -1,22 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ConjureGrade.Spells;
 using static ConjureGrade.Apprentice.MathApprentice;
 
 namespace ConjureGrade.Wizards
 {
+    /// <summary>
+    /// Used to calculate the grade for a course
+    /// </summary>
     public class CourseWizard : ICourseWizard
     {
         public ICourseResult Course { get; set; }
 
+        /// <summary>
+        /// Updates both the grade based on assignments taken and assignments planned
+        /// </summary>
         public void UpdateAllGrades()
         {
-            throw new NotImplementedException();
+            UpdateGradeToDate();
+            UpdateGradeOverall();
         }
 
+        /// <summary>
+        /// Updates the grade based only on assignments graded
+        /// </summary>
         public void UpdateGradeToDate()
         {
             if (Course.GetType() == typeof(WeightedCourseResult))
@@ -29,6 +36,9 @@ namespace ConjureGrade.Wizards
             }
         }
 
+        /// <summary>
+        /// Updates the grade based on all planned assignments
+        /// </summary>
         public void UpdateGradeOverall()
         {
             if (Course.GetType() == typeof(WeightedCourseResult))
@@ -50,14 +60,14 @@ namespace ConjureGrade.Wizards
             if (overallGrade)
             {
                 castedCourse.PointsPossibleOverall = castedCourse.Evaluations.Sum(e => e.PointsPossibleOverall);
-                castedCourse.RawOverallGrade = CalculateRawPercentage(castedCourse.PointsEarned, castedCourse.PointsPossibleOverall);
-                castedCourse.FriendlyOverallGrade = GetFriendlyPercent(castedCourse.RawOverallGrade);
+                castedCourse.GradeOverallRaw = CalculateRawPercentage(castedCourse.PointsEarned, castedCourse.PointsPossibleOverall);
+                castedCourse.GradeOverallFriendly = GetFriendlyPercent(castedCourse.GradeOverallRaw);
             }
             else
             {
                 castedCourse.PointsPossibleToDate = castedCourse.Evaluations.Sum(e => e.PointsPossibleToDate);
-                castedCourse.RawToDateGrade = CalculateRawPercentage(castedCourse.PointsEarned, castedCourse.PointsPossibleToDate);
-                castedCourse.FriendlyToDateGrade = GetFriendlyPercent(castedCourse.RawToDateGrade);
+                castedCourse.GradeToDateRaw = CalculateRawPercentage(castedCourse.PointsEarned, castedCourse.PointsPossibleToDate);
+                castedCourse.GradeToDateFriendly = GetFriendlyPercent(castedCourse.GradeToDateRaw);
             }
 
             Course = castedCourse;
@@ -69,13 +79,13 @@ namespace ConjureGrade.Wizards
 
             if (overallGrade)
             {
-                Course.RawOverallGrade = totalGrade;
-                Course.FriendlyOverallGrade = GetFriendlyPercent(totalGrade);
+                Course.GradeOverallRaw = totalGrade;
+                Course.GradeOverallFriendly = GetFriendlyPercent(totalGrade);
             }
             else
             {
-                Course.RawToDateGrade = totalGrade;
-                Course.FriendlyToDateGrade = GetFriendlyPercent(totalGrade);
+                Course.GradeToDateRaw = totalGrade;
+                Course.GradeToDateFriendly = GetFriendlyPercent(totalGrade);
             }
         }
 

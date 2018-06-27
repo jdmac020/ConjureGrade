@@ -5,6 +5,9 @@ namespace ConjureGrade.Apprentice
 {
     public static class MathApprentice
     {
+        /// <summary>
+        /// Used across the library to get the percentage of two numbers, and return it as a double rounded to two decimal places.
+        /// </summary>
         public static double CalculateRawPercentage(double earnedPoints, double possiblePoints, int precisionInDecimalPlaces = 2)
         {
 
@@ -25,6 +28,9 @@ namespace ConjureGrade.Apprentice
             }
         }
 
+        /// <summary>
+        /// Converts a percentage in decimal form to a whole number for easier reading.
+        /// </summary>
         public static double GetFriendlyPercent(double rawPercent)
         {
             if (rawPercent < 0)
@@ -43,6 +49,9 @@ namespace ConjureGrade.Apprentice
             
         }
 
+        /// <summary>
+        /// Accepts two numbers and returns the whole number percent value.
+        /// </summary>
         public static double GetFriendlyPercent(double pointsEarned, double pointsPossible)
         {
             var rawPercent = CalculateRawPercentage(pointsEarned, pointsPossible);

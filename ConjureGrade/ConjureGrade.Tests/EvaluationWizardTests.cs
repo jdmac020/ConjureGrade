@@ -20,7 +20,7 @@ namespace ConjureGrade.Tests
             var testClass = Create_EvaluationWizard();
             testClass.Evaluation = Create_ThreeTests_NoDrop_100();
 
-            testClass.UpdateOverAllGrade();
+            testClass.UpdateGradeOverAll();
 
             testClass.Evaluation.GradeOverallRaw.ShouldBe(1);
             testClass.Evaluation.GradeOverallFriendly.ShouldBe(100);
@@ -32,7 +32,7 @@ namespace ConjureGrade.Tests
             var testClass = Create_EvaluationWizard();
             testClass.Evaluation = Create_ThreeTests_NoDrop_93();
 
-            testClass.UpdateOverAllGrade();
+            testClass.UpdateGradeOverAll();
 
             testClass.Evaluation.GradeOverallRaw.ShouldBe(.93);
             testClass.Evaluation.GradeOverallFriendly.ShouldBe(93);
@@ -44,7 +44,7 @@ namespace ConjureGrade.Tests
             var testClass = Create_EvaluationWizard();
             testClass.Evaluation = Create_ThreeTests_NoDrop_67();
 
-            testClass.UpdateOverAllGrade();
+            testClass.UpdateGradeOverAll();
 
             testClass.Evaluation.GradeOverallRaw.ShouldBe(.67);
             testClass.Evaluation.GradeOverallFriendly.ShouldBe(67);
@@ -56,7 +56,7 @@ namespace ConjureGrade.Tests
             var testClass = Create_EvaluationWizard();
             testClass.Evaluation = Create_ThreeTests_NoDrop_100();
 
-            testClass.UpdateToDateGrade();
+            testClass.UpdateGradeToDate();
 
             testClass.Evaluation.GradeToDateRaw.ShouldBe(1);
             testClass.Evaluation.GradeToDateFriendly.ShouldBe(100);
@@ -68,7 +68,7 @@ namespace ConjureGrade.Tests
             var testClass = Create_EvaluationWizard();
             testClass.Evaluation = Create_TwoOutOfFour_NoDrop_50and100();
 
-            testClass.UpdateToDateGrade();
+            testClass.UpdateGradeToDate();
 
             testClass.Evaluation.GradeToDateRaw.ShouldBe(1);
             testClass.Evaluation.GradeToDateFriendly.ShouldBe(100);
@@ -80,7 +80,7 @@ namespace ConjureGrade.Tests
             var testClass = Create_EvaluationWizard();
             testClass.Evaluation = Create_TwoOutOfFour_NoDrop_50and100();
 
-            testClass.UpdateOverAllGrade();
+            testClass.UpdateGradeOverAll();
 
             testClass.Evaluation.GradeOverallRaw.ShouldBe(.5);
             testClass.Evaluation.GradeOverallFriendly.ShouldBe(50);
@@ -92,7 +92,7 @@ namespace ConjureGrade.Tests
             var testClass = Create_EvaluationWizard();
             testClass.Evaluation = Create_TwoOutOfFour_NoDrop_45and90();
 
-            testClass.UpdateToDateGrade();
+            testClass.UpdateGradeToDate();
 
             testClass.Evaluation.GradeToDateRaw.ShouldBe(.9);
             testClass.Evaluation.GradeToDateFriendly.ShouldBe(90);
@@ -104,7 +104,7 @@ namespace ConjureGrade.Tests
             var testClass = Create_EvaluationWizard();
             testClass.Evaluation = Create_TwoOutOfFour_NoDrop_45and90();
 
-            testClass.UpdateOverAllGrade();
+            testClass.UpdateGradeOverAll();
 
             testClass.Evaluation.GradeOverallRaw.ShouldBe(.45);
             testClass.Evaluation.GradeOverallFriendly.ShouldBe(45);
@@ -116,7 +116,7 @@ namespace ConjureGrade.Tests
             var testClass = Create_EvaluationWizard();
             testClass.Evaluation = Create_3OutOf4_DropLowest_100and67();
 
-            testClass.UpdateOverAllGrade();
+            testClass.UpdateGradeOverAll();
 
             testClass.Evaluation.GradeOverallRaw.ShouldBe(.67);
             testClass.Evaluation.GradeOverallFriendly.ShouldBe(67);
@@ -128,7 +128,7 @@ namespace ConjureGrade.Tests
             var testClass = Create_EvaluationWizard();
             testClass.Evaluation = Create_3OutOf4_DropLowest_100and67();
 
-            testClass.UpdateToDateGrade();
+            testClass.UpdateGradeToDate();
 
             testClass.Evaluation.GradeToDateRaw.ShouldBe(1);
             testClass.Evaluation.GradeToDateFriendly.ShouldBe(100);
@@ -140,7 +140,7 @@ namespace ConjureGrade.Tests
             var testClass = Create_EvaluationWizard();
             testClass.Evaluation = Create_4Tests_DropLowest_100();
 
-            testClass.UpdateOverAllGrade();
+            testClass.UpdateGradeOverAll();
 
             testClass.Evaluation.GradeOverallRaw.ShouldBe(1);
             testClass.Evaluation.GradeOverallFriendly.ShouldBe(100);
@@ -152,7 +152,7 @@ namespace ConjureGrade.Tests
             var testClass = Create_EvaluationWizard();
             testClass.Evaluation = Create_4Tests_DropLowest_100();
 
-            testClass.UpdateToDateGrade();
+            testClass.UpdateGradeToDate();
 
             testClass.Evaluation.GradeToDateRaw.ShouldBe(1);
             testClass.Evaluation.GradeToDateFriendly.ShouldBe(100);
@@ -164,7 +164,7 @@ namespace ConjureGrade.Tests
             var testClass = Create_EvaluationWizard();
             testClass.Evaluation = Create_3OutOf4_DropLowest_90and60();
 
-            testClass.UpdateOverAllGrade();
+            testClass.UpdateGradeOverAll();
 
             testClass.Evaluation.GradeOverallRaw.ShouldBe(.6);
             testClass.Evaluation.GradeOverallFriendly.ShouldBe(60);
@@ -176,7 +176,7 @@ namespace ConjureGrade.Tests
             var testClass = Create_EvaluationWizard();
             testClass.Evaluation = Create_3OutOf4_DropLowest_90and60();
 
-            testClass.UpdateToDateGrade();
+            testClass.UpdateGradeToDate();
 
             testClass.Evaluation.GradeToDateRaw.ShouldBe(.9);
             testClass.Evaluation.GradeToDateFriendly.ShouldBe(90);
@@ -188,7 +188,7 @@ namespace ConjureGrade.Tests
             var testClass = Create_EvaluationWizard();
             testClass.Evaluation = Create_3OutOf4_DropLowest_100and67();
 
-            testClass.UpdateOverAllGrade();
+            testClass.UpdateGradeOverAll();
 
             testClass.Evaluation.GradeOverallRaw.ShouldBe(.67);
             testClass.Evaluation.GradeOverallFriendly.ShouldBe(67);
@@ -200,7 +200,7 @@ namespace ConjureGrade.Tests
             var testClass = Create_EvaluationWizard();
             testClass.Evaluation = Create_3OutOf4_DropLowest_100and67();
 
-            testClass.UpdateToDateGrade();
+            testClass.UpdateGradeToDate();
 
             testClass.Evaluation.GradeToDateRaw.ShouldBe(1);
             testClass.Evaluation.GradeToDateFriendly.ShouldBe(100);
@@ -212,7 +212,7 @@ namespace ConjureGrade.Tests
             var testClass = Create_EvaluationWizard();
             testClass.Evaluation = Create_4Tests_DropLowest_90();
 
-            testClass.UpdateOverAllGrade();
+            testClass.UpdateGradeOverAll();
 
             testClass.Evaluation.GradeOverallRaw.ShouldBe(.93);
             testClass.Evaluation.GradeOverallFriendly.ShouldBe(93);
@@ -224,7 +224,7 @@ namespace ConjureGrade.Tests
             var testClass = Create_EvaluationWizard();
             testClass.Evaluation = Create_4Tests_DropLowest_90();
 
-            testClass.UpdateToDateGrade();
+            testClass.UpdateGradeToDate();
 
             testClass.Evaluation.GradeToDateRaw.ShouldBe(.93);
             testClass.Evaluation.GradeToDateFriendly.ShouldBe(93);
@@ -236,7 +236,7 @@ namespace ConjureGrade.Tests
             var testClass = Create_EvaluationWizard();
             testClass.Evaluation = Create_4Tests_DropLowestTwo_100();
 
-            testClass.UpdateOverAllGrade();
+            testClass.UpdateGradeOverAll();
 
             testClass.Evaluation.GradeOverallRaw.ShouldBe(1);
             testClass.Evaluation.GradeOverallFriendly.ShouldBe(100);
@@ -248,7 +248,7 @@ namespace ConjureGrade.Tests
             var testClass = Create_EvaluationWizard();
             testClass.Evaluation = Create_4Tests_DropLowestTwo_100();
 
-            testClass.UpdateToDateGrade();
+            testClass.UpdateGradeToDate();
 
             testClass.Evaluation.GradeToDateRaw.ShouldBe(1);
             testClass.Evaluation.GradeToDateFriendly.ShouldBe(100);

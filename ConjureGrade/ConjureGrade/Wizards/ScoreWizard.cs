@@ -1,16 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ConjureGrade.Exceptions;
 using ConjureGrade.Spells;
 using static  ConjureGrade.Apprentice.MathApprentice;
 
 namespace ConjureGrade.Wizards
 {
+    /// <summary>
+    /// Used to determine ScoreResults from points earned and points possible
+    /// </summary>
     public class ScoreWizard : IScoreWizard
     {
+        /// <summary>
+        /// Calculate the results for a single score
+        /// </summary>
         public ScoreResult GetSingleScoreResult(double earnedPoints, double possiblePoints)
         {
             var rawResult = CalculateRawPercentage(earnedPoints, possiblePoints);
@@ -19,12 +21,15 @@ namespace ConjureGrade.Wizards
             return new ScoreResult
             {
                 PointsPossible = possiblePoints,
-                FriendlyGradeResult = friendResult,
+                GradeFriendly = friendResult,
                 PointsEarned = earnedPoints,
-                RawGradeResult = rawResult
+                GradeRaw = rawResult
             };
         }
 
+        /// <summary>
+        /// Calculate the results for multiple scores
+        /// </summary>
         public List<ScoreResult> GetMultipleScoreResults(IEnumerable<ScoreResult> scoresToGrade)
         {
             var positiveScores = scoresToGrade.Where(stg => stg.PointsEarned >= 0 && stg.PointsPossible >= 0);
@@ -34,8 +39,8 @@ namespace ConjureGrade.Wizards
                     {
                         PointsEarned = stg.PointsEarned,
                         PointsPossible = stg.PointsPossible,
-                        RawGradeResult = CalculateRawPercentage(stg.PointsEarned, stg.PointsPossible),
-                        FriendlyGradeResult = GetFriendlyPercent(stg.PointsEarned, stg.PointsPossible)
+                        GradeRaw = CalculateRawPercentage(stg.PointsEarned, stg.PointsPossible),
+                        GradeFriendly = GetFriendlyPercent(stg.PointsEarned, stg.PointsPossible)
                     })
                 .ToList();
             
