@@ -13,5 +13,10 @@ namespace ConjureGrade.Tests.Factories
         {
             return new EvaluationWizard();
         }
+
+        public static ICourseWizard Create_CourseWizard()
+        {
+            return new CourseWizard();
+        }
     }
 }

@@ -31,13 +31,13 @@ namespace ConjureGrade.Wizards
             {
                 Evaluation.PointsPossibleOverall = Evaluation.TotalScoreCount * Evaluation.PointValuePerScore;
 
-                Evaluation.PointsEarnedOverall = GetPointsEarnedAllScores();
+                SetPointsEarnedAllScores();
             }
             else
             {
                 Evaluation.PointsPossibleOverall = (Evaluation.TotalScoreCount - Evaluation.DropLowestCount) * Evaluation.PointValuePerScore;
 
-                Evaluation.PointsEarnedOverall = GetPointsEarnedAfterDroppingLowest();
+                SetPointsEarnedAfterDroppingLowest();
             }
 
             SetGradeOverall();
@@ -52,27 +52,27 @@ namespace ConjureGrade.Wizards
             {
                 Evaluation.PointsPossibleToDate = Evaluation.Scores.Count * Evaluation.PointValuePerScore;
 
-                Evaluation.PointsEarnedToDate = GetPointsEarnedAllScores();
+                SetPointsEarnedAllScores();
             }
             else
             {
                 Evaluation.PointsPossibleToDate = (Evaluation.Scores.Count - Evaluation.DropLowestCount) * Evaluation.PointValuePerScore;
 
-                Evaluation.PointsEarnedToDate = GetPointsEarnedAfterDroppingLowest();
+                SetPointsEarnedAfterDroppingLowest();
             }
 
             SetGradeToDate();
         }
 
-        protected double GetPointsEarnedAllScores()
+        protected void SetPointsEarnedAllScores()
         {
-            return Evaluation.Scores.Sum(s => s.PointsEarned);
+            Evaluation.PointsEarned = Evaluation.Scores.Sum(s => s.PointsEarned);
         }
 
         protected void SetGradeOverall()
         {
             Evaluation.GradeOverallRaw =
-                CalculateRawPercentage(Evaluation.PointsEarnedOverall, Evaluation.PointsPossibleOverall);
+                CalculateRawPercentage(Evaluation.PointsEarned, Evaluation.PointsPossibleOverall);
 
             Evaluation.GradeOverallFriendly = GetFriendlyPercent(Evaluation.GradeOverallRaw);
         }
@@ -80,12 +80,12 @@ namespace ConjureGrade.Wizards
         protected void SetGradeToDate()
         {
             Evaluation.GradeToDateRaw =
-                CalculateRawPercentage(Evaluation.PointsEarnedToDate, Evaluation.PointsPossibleToDate);
+                CalculateRawPercentage(Evaluation.PointsEarned, Evaluation.PointsPossibleToDate);
 
             Evaluation.GradeToDateFriendly = GetFriendlyPercent(Evaluation.GradeToDateRaw);
         }
 
-        protected double GetPointsEarnedAfterDroppingLowest()
+        protected void SetPointsEarnedAfterDroppingLowest()
         {
             var adjustedScoreList = Evaluation.Scores;
 
@@ -98,7 +98,7 @@ namespace ConjureGrade.Wizards
                 adjustedScoreList.Remove(scoreToRemove);
             }
 
-            return adjustedScoreList.Sum(s => s.PointsEarned);
+            Evaluation.PointsEarned = adjustedScoreList.Sum(s => s.PointsEarned);
             
         }
         
