@@ -16,27 +16,27 @@ namespace ConjureGrade.Tests
     public class CourseWizardTests
     {
         [Fact]
-        public void UpdateGradeToDate_WeightedCourse_Result84()
+        public void UpdateGradeToDate_WeightedCourse_Result83()
         {
             var testClass = Create_CourseWizard();
             testClass.Course = Create_WeightedCourse();
 
             testClass.UpdateGradeToDate();
 
-            testClass.Course.RawToDateGrade.ShouldBe(.84);
-            testClass.Course.FriendlyToDateGrade.ShouldBe(84);
+            testClass.Course.RawToDateGrade.ShouldBe(.83);
+            testClass.Course.FriendlyToDateGrade.ShouldBe(83);
         }
 
         [Fact]
-        public void UpdateGradeOverAll_WeightedCourse_Result84()
+        public void UpdateGradeOverAll_WeightedCourse_Result83()
         {
             var testClass = Create_CourseWizard();
             testClass.Course = Create_WeightedCourse();
 
             testClass.UpdateGradeOverall();
 
-            testClass.Course.RawToDateGrade.ShouldBe(.84);
-            testClass.Course.FriendlyToDateGrade.ShouldBe(84);
+            testClass.Course.RawOverallGrade.ShouldBe(.83);
+            testClass.Course.FriendlyOverallGrade.ShouldBe(83);
         }
 
         [Fact]
@@ -64,8 +64,8 @@ namespace ConjureGrade.Tests
 
             testClass.UpdateGradeOverall();
 
-            testClass.Course.RawToDateGrade.ShouldBe(.80);
-            testClass.Course.FriendlyToDateGrade.ShouldBe(80);
+            testClass.Course.RawOverallGrade.ShouldBe(.80);
+            testClass.Course.FriendlyOverallGrade.ShouldBe(80);
 
             var result = (CourseResult)testClass.Course;
 

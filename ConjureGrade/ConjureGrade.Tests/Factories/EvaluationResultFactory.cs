@@ -73,8 +73,10 @@ namespace ConjureGrade.Tests.Factories
                 PointsEarned = percentGrade,
                 PointsPossibleToDate = 100,
                 PointsPossibleOverall = 100,
+                GradeOverallRaw = percentGrade / 100,
+                GradeToDateRaw = percentGrade / 100,
                 Weighted = true,
-                WeightAmount = weightAmount
+                WeightAmount = weightAmount / 100
             };
         }
 
