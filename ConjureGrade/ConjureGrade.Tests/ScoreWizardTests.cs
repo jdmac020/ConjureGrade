@@ -22,8 +22,8 @@ namespace ConjureGrade.Tests
 
             var result = testClass.GetSingleScoreResult(testScore.PointsEarned, testScore.PointsPossible);
 
-            result.RawGradeResult.ShouldBe(1);
-            result.FriendlyGradeResult.ShouldBe(100);
+            result.GradeRaw.ShouldBe(1);
+            result.GradeFriendly.ShouldBe(100);
         }
 
         [Fact]
@@ -34,8 +34,8 @@ namespace ConjureGrade.Tests
 
             var result = testClass.GetSingleScoreResult(testScore.PointsEarned, testScore.PointsPossible);
 
-            result.RawGradeResult.ShouldBe(0);
-            result.FriendlyGradeResult.ShouldBe(0);
+            result.GradeRaw.ShouldBe(0);
+            result.GradeFriendly.ShouldBe(0);
         }
 
         [Fact]
@@ -46,8 +46,8 @@ namespace ConjureGrade.Tests
 
             var result = testClass.GetSingleScoreResult(testScore.PointsEarned, testScore.PointsPossible);
 
-            result.RawGradeResult.ShouldBe(0);
-            result.FriendlyGradeResult.ShouldBe(0);
+            result.GradeRaw.ShouldBe(0);
+            result.GradeFriendly.ShouldBe(0);
         }
 
         [Fact]
@@ -68,10 +68,10 @@ namespace ConjureGrade.Tests
 
             var result = testClass.GetMultipleScoreResults(testScores);
 
-            result.First().RawGradeResult.ShouldBe(1);
-            result.First().FriendlyGradeResult.ShouldBe(100);
-            result.Last().RawGradeResult.ShouldBe(0);
-            result.Last().FriendlyGradeResult.ShouldBe(0);
+            result.First().GradeRaw.ShouldBe(1);
+            result.First().GradeFriendly.ShouldBe(100);
+            result.Last().GradeRaw.ShouldBe(0);
+            result.Last().GradeFriendly.ShouldBe(0);
         }
 
         [Fact]

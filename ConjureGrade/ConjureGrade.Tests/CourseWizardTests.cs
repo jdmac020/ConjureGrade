@@ -23,8 +23,8 @@ namespace ConjureGrade.Tests
 
             testClass.UpdateGradeToDate();
 
-            testClass.Course.RawToDateGrade.ShouldBe(.83);
-            testClass.Course.FriendlyToDateGrade.ShouldBe(83);
+            testClass.Course.GradeToDateRaw.ShouldBe(.83);
+            testClass.Course.GradeToDateFriendly.ShouldBe(83);
         }
 
         [Fact]
@@ -35,8 +35,8 @@ namespace ConjureGrade.Tests
 
             testClass.UpdateGradeOverall();
 
-            testClass.Course.RawOverallGrade.ShouldBe(.83);
-            testClass.Course.FriendlyOverallGrade.ShouldBe(83);
+            testClass.Course.GradeOverallRaw.ShouldBe(.83);
+            testClass.Course.GradeOverallFriendly.ShouldBe(83);
         }
 
         [Fact]
@@ -47,8 +47,8 @@ namespace ConjureGrade.Tests
 
             testClass.UpdateGradeToDate();
 
-            testClass.Course.RawToDateGrade.ShouldBe(.80);
-            testClass.Course.FriendlyToDateGrade.ShouldBe(80);
+            testClass.Course.GradeToDateRaw.ShouldBe(.80);
+            testClass.Course.GradeToDateFriendly.ShouldBe(80);
 
             var result = (CourseResult) testClass.Course;
 
@@ -64,8 +64,8 @@ namespace ConjureGrade.Tests
 
             testClass.UpdateGradeOverall();
 
-            testClass.Course.RawOverallGrade.ShouldBe(.80);
-            testClass.Course.FriendlyOverallGrade.ShouldBe(80);
+            testClass.Course.GradeOverallRaw.ShouldBe(.80);
+            testClass.Course.GradeOverallFriendly.ShouldBe(80);
 
             var result = (CourseResult)testClass.Course;
 

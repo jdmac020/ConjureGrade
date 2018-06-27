@@ -1,28 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using ConjureGrade.Exceptions;
 using ConjureGrade.Spells;
 using static ConjureGrade.Apprentice.MathApprentice;
 
 namespace ConjureGrade.Wizards
 {
+    /// <summary>
+    /// Used to calculate the grade for an evaluation type
+    /// </summary>
     public class EvaluationWizard : IEvaluationWizard
     {
         public EvaluationResult Evaluation { get; set; }
 
+        /// <summary>
+        /// Updates both the grade based on assignments taken and assignments planned
+        /// </summary>
         public void UpdateAllGrades()
         {
             if (Evaluation is null)
                 throw new BadSpellException("There Is No Evaluation Property Set.");
 
-            UpdateOverAllGrade();
-            UpdateToDateGrade();
+            UpdateGradeOverAll();
+            UpdateGradeToDate();
         }
 
-        public void UpdateOverAllGrade()
+        /// <summary>
+        /// Updates the grade based on all planned assignments
+        /// </summary>
+        public void UpdateGradeOverAll()
         {
             if (Evaluation is null)
                 throw new BadSpellException("There Is No Evaluation Property Set.");
@@ -42,8 +47,11 @@ namespace ConjureGrade.Wizards
 
             SetGradeOverall();
         }
-        
-        public void UpdateToDateGrade()
+
+        /// <summary>
+        /// Updates the grade based only on assignments graded
+        /// </summary>
+        public void UpdateGradeToDate()
         {
             if (Evaluation is null)
                 throw new BadSpellException("There Is No Evaluation Property Set.");
