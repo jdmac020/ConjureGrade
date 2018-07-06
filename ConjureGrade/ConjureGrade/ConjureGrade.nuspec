@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <summary>A simple library used to help calculate both weighted and non-weighted course grades</summary>
+    <owners>$author$</owners>
+    <licenseUrl>https://github.com/jdmac020/ConjureGrade/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/jdmac020/ConjureGrade</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Initial beta release</releaseNotes>
+    <copyright>Copyright 2018</copyright>
+    <tags>C# grades calculator</tags>
+  </metadata>
+</package>
