@@ -10,6 +10,14 @@ namespace ConjureGrade.Wizards
     /// </summary>
     public class CourseWizard : ICourseWizard
     {
+        public double OverallGradeFriendly { get { return Course.GradeOverallFriendly; } }
+
+        public double OverallGradeRaw { get { return Course.GradeOverallRaw; } }
+
+        public double ToDateGradeFriendly { get { return Course.GradeToDateFriendly; } }
+
+        public double ToDateGradeRaw { get { return Course.GradeToDateRaw; } }
+
         public ICourseResult Course { get; set; }
 
         /// <summary>
@@ -53,7 +61,7 @@ namespace ConjureGrade.Wizards
 
         protected void ProcessNonWeightedGrade(bool overallGrade)
         {
-            var castedCourse = (CourseResult) Course;
+            var castedCourse = (CourseResult)Course;
 
             castedCourse.PointsEarned = castedCourse.PointsEarned = castedCourse.Evaluations.Sum(e => e.PointsEarned);
 
@@ -98,7 +106,7 @@ namespace ConjureGrade.Wizards
                 if (overallGrade)
                 {
                     var weightedGrade = CalculateRawPercentage(eval.PointsEarned, eval.PointsPossibleOverall) * eval.WeightAmount;
-                   // var weightedGrade = eval.GradeOverallRaw * eval.WeightAmount;
+                    // var weightedGrade = eval.GradeOverallRaw * eval.WeightAmount;
                     totalGrade += weightedGrade;
                 }
                 else
@@ -108,7 +116,7 @@ namespace ConjureGrade.Wizards
                 }
             }
 
-            return Math.Round(totalGrade,2);
+            return Math.Round(totalGrade, 2);
         }
     }
 }
