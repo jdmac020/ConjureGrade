@@ -11,8 +11,8 @@
     <projectUrl>https://github.com/jdmac020/ConjureGrade</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Initial beta release</releaseNotes>
+    <releaseNotes>Beta 1.1--Changed weighted course calculation, easier grade access via properties in Wizard</releaseNotes>
     <copyright>Copyright 2018</copyright>
-    <tags>C# grades calculator</tags>
+    <tags>C# academic grade calculator</tags>
   </metadata>
 </package>
