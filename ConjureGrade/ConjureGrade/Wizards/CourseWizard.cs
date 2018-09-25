@@ -97,12 +97,13 @@ namespace ConjureGrade.Wizards
             {
                 if (overallGrade)
                 {
-                    var weightedGrade = eval.GradeOverallRaw * eval.WeightAmount;
+                    var weightedGrade = CalculateRawPercentage(eval.PointsEarned, eval.PointsPossibleOverall) * eval.WeightAmount;
+                   // var weightedGrade = eval.GradeOverallRaw * eval.WeightAmount;
                     totalGrade += weightedGrade;
                 }
                 else
                 {
-                    var weightedGrade = eval.GradeToDateRaw * eval.WeightAmount;
+                    var weightedGrade = CalculateRawPercentage(eval.PointsEarned, eval.PointsPossibleToDate) * eval.WeightAmount;
                     totalGrade += weightedGrade;
                 }
             }

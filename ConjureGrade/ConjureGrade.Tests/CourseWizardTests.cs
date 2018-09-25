@@ -95,5 +95,43 @@ namespace ConjureGrade.Tests
 
             testClass.UpdateAllGrades();
         }
+
+        [Fact]
+        public void UpdateOverAllGrade_NoScoreEvals_Equal100()
+        {
+            var testClass = Create_CourseWizard();
+
+            var final = new EvaluationResult { Weighted = true, WeightAmount = .4, PointValuePerScore = 100, PointsEarned = 0, PointsPossibleOverall = 100,  PointsPossibleToDate = 0,  };
+            var exams = new EvaluationResult { Weighted = true, WeightAmount = .3, PointValuePerScore = 100, PointsEarned = 175, PointsPossibleOverall = 300, PointsPossibleToDate = 200 };
+            var quiz = new EvaluationResult { Weighted = true, WeightAmount = .2, PointValuePerScore = 100, PointsEarned = 342, PointsPossibleOverall = 400, PointsPossibleToDate = 400 };
+            var hw = new EvaluationResult { Weighted = true, WeightAmount = .1, PointValuePerScore = 100, PointsEarned = 0, PointsPossibleOverall = 800, PointsPossibleToDate = 0 };
+
+            //var final = new EvaluationResult { PointsPossibleOverall = 100, TotalScoreCount = 1, PointsEarned = 0, GradeToDateRaw = 1, GradeOverallRaw = 0, Weighted = true, WeightAmount = .4, PointsPossibleToDate = 0, PointValuePerScore = 100 };
+            //var exams = new EvaluationResult { Weighted = true, WeightAmount = .3, TotalScoreCount = 3, PointValuePerScore = 100, PointsEarned = 175, PointsPossibleOverall = 300, PointsPossibleToDate = 200, GradeToDateRaw = .88, GradeOverallRaw = .58, };
+            //var quiz = new EvaluationResult { Weighted = true, WeightAmount = .2, TotalScoreCount = 4, PointValuePerScore = 100, PointsEarned = 342, PointsPossibleOverall = 400, PointsPossibleToDate = 400, GradeToDateRaw = .86, GradeOverallRaw = .86 };
+            //var hw = new EvaluationResult { Weighted = true, WeightAmount = .1, TotalScoreCount = 8, PointValuePerScore = 100, PointsEarned = 0, PointsPossibleOverall = 800, PointsPossibleToDate = 0, GradeToDateRaw = 1, GradeOverallRaw = 0 };
+
+            //var final = new EvaluationResult { PointsPossibleOverall = 100, PointsEarned = 0, Weighted = true, WeightAmount = .4 };
+            //var exams = new EvaluationResult { Weighted = true, WeightAmount = .3, PointsEarned = 175, PointsPossibleOverall = 300, };
+            //var quiz = new EvaluationResult { Weighted = true, WeightAmount = .2, PointsEarned = 342, PointsPossibleOverall = 400 };
+            //var hw = new EvaluationResult { Weighted = true, WeightAmount = .1, PointsEarned = 0, PointsPossibleOverall = 800 };
+
+            var courseResult = new WeightedCourseResult
+            {
+                Evaluations = new List<EvaluationResult>
+            {
+                final,
+                exams,
+                quiz,
+                hw
+            }
+            };
+
+            testClass.Course = courseResult;
+
+            testClass.UpdateGradeOverall();
+
+            testClass.Course.GradeOverallFriendly.ShouldBe(35);
+        }
     }
 }
