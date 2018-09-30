@@ -42,14 +42,21 @@ namespace ConjureGrade.Wizards
 
             if (Evaluation.DropLowest == false)
             {
-                Evaluation.PointsPossibleOverall = Evaluation.TotalScoreCount * Evaluation.PointValuePerScore;
-
+                if (Evaluation.PointsPossibleOverall == 0)
+                {
+                    Evaluation.PointsPossibleOverall = Evaluation.TotalScoreCount * Evaluation.PointValuePerScore;
+                }
+                
                 SetPointsEarnedAllScores();
             }
             else
             {
-                Evaluation.PointsPossibleOverall = (Evaluation.TotalScoreCount - Evaluation.DropLowestCount) * Evaluation.PointValuePerScore;
-
+                
+                if (Evaluation.PointsPossibleOverall == 0)
+                {
+                    Evaluation.PointsPossibleOverall = (Evaluation.TotalScoreCount - Evaluation.DropLowestCount) * Evaluation.PointValuePerScore;
+                }
+                
                 SetPointsEarnedAfterDroppingLowest();
             }
 
@@ -66,8 +73,18 @@ namespace ConjureGrade.Wizards
 
             if (Evaluation.DropLowest == false)
             {
-                Evaluation.PointsPossibleToDate = Evaluation.Scores.Count() * Evaluation.PointValuePerScore;
-
+                if (Evaluation.Scores != null)
+                {
+                    Evaluation.PointsPossibleToDate = Evaluation.Scores.Count() * Evaluation.PointValuePerScore;
+                }
+                else
+                {
+                    if (Evaluation.PointsPossibleToDate == 0 && Evaluation.PointsPossibleOverall != 0)
+                    {
+                        Evaluation.PointsPossibleToDate = Evaluation.PointsPossibleOverall;
+                    }
+                }
+                
                 SetPointsEarnedAllScores();
             }
             else
@@ -80,11 +97,21 @@ namespace ConjureGrade.Wizards
             SetGradeToDate();
         }
 
+        // If there is no Scores object assigned, use PointsEarned as-is
+        // If there is a Scores object assigned but it is empty, set PointsEarned to 0
+        // If there is a Scores object with Scores attached, set PointsEarned to the sum of all scores PointsEarned property
         protected void SetPointsEarnedAllScores()
         {
-            if ((Evaluation.Scores != null || Evaluation.Scores.Count() != 0))
+            if (Evaluation.Scores != null)
             {
-                Evaluation.PointsEarned = Evaluation.Scores.Sum(s => s.PointsEarned);
+                if (Evaluation.Scores.Count() != 0)
+                {
+                    Evaluation.PointsEarned = Evaluation.Scores.Sum(s => s.PointsEarned);
+                }
+                else
+                {
+                    Evaluation.PointsEarned = 0;
+                }
             }
         }
 
@@ -107,23 +134,29 @@ namespace ConjureGrade.Wizards
         protected void SetPointsEarnedAfterDroppingLowest()
         {
 
-            if ((Evaluation.Scores != null || Evaluation.Scores.Count() != 0))
+            if (Evaluation.Scores != null)
             {
-
-                var adjustedScoreList = Evaluation.Scores.ToList();
-
-                for (int i = 0; i < Evaluation.DropLowestCount; i++)
+                if (Evaluation.Scores.Count() != 0)
                 {
-                    var lowestScore = adjustedScoreList.Min(s => s.PointsEarned);
+                    var adjustedScoreList = Evaluation.Scores.ToList();
 
-                    var scoreToRemove = Evaluation.Scores.Where(s => s.PointsEarned == lowestScore).FirstOrDefault();
+                    for (int i = 0; i < Evaluation.DropLowestCount; i++)
+                    {
+                        var lowestScore = adjustedScoreList.Min(s => s.PointsEarned);
 
-                    adjustedScoreList.Remove(scoreToRemove);
+                        var scoreToRemove = Evaluation.Scores.Where(s => s.PointsEarned == lowestScore).FirstOrDefault();
+
+                        adjustedScoreList.Remove(scoreToRemove);
+                    }
+
+                    Evaluation.PointsEarned = adjustedScoreList.Sum(s => s.PointsEarned);
                 }
-
-                Evaluation.PointsEarned = adjustedScoreList.Sum(s => s.PointsEarned);
+                else
+                {
+                    Evaluation.PointsEarned = 0;
+                }
             }
         }
-        
+
     }
 }

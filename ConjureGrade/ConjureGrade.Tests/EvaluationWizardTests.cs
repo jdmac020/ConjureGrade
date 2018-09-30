@@ -9,6 +9,7 @@ using Xunit;
 using Shouldly;
 using static ConjureGrade.Tests.Factories.WizardFactory;
 using static ConjureGrade.Tests.Factories.EvaluationResultFactory;
+using ConjureGrade.Spells;
 
 namespace ConjureGrade.Tests
 {
@@ -252,6 +253,18 @@ namespace ConjureGrade.Tests
 
             testClass.Evaluation.GradeToDateRaw.ShouldBe(1);
             testClass.Evaluation.GradeToDateFriendly.ShouldBe(100);
+        }
+
+        [Fact]
+        public void UpdateOverAllGrade_NoScoresNoDrop_Results100()
+        {
+            var testClass = Create_EvaluationWizard();
+            testClass.Evaluation = new EvaluationResult { PointsEarned = 100, PointsPossibleOverall = 100, PointsPossibleToDate = 100 };
+
+            testClass.UpdateAllGrades();
+
+            testClass.OverallGradeFriendly.ShouldBe(100);
+            testClass.ToDateGradeFriendly.ShouldBe(100);
         }
     }
 }
