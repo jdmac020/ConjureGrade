@@ -7,6 +7,14 @@ namespace ConjureGrade.Wizards
     /// </summary>
     public interface ICourseWizard
     {
+        double OverallGradeFriendly { get; }
+
+        double OverallGradeRaw { get; }
+
+        double ToDateGradeFriendly { get; }
+
+        double ToDateGradeRaw { get; }
+
         ICourseResult Course { get; set; }
 
         /// <summary>

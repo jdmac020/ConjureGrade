@@ -7,7 +7,15 @@ namespace ConjureGrade.Wizards
     /// </summary>
     public interface IEvaluationWizard
     {
-        EvaluationResult Evaluation { get; set; }
+        double OverallGradeFriendly { get; }
+
+        double OverallGradeRaw { get; }
+
+        double ToDateGradeFriendly { get; }
+
+        double ToDateGradeRaw { get; }
+
+        IEvaluationResult Evaluation { get; set; }
 
         /// <summary>
         /// Updates both the grade based on assignments taken and assignments planned
