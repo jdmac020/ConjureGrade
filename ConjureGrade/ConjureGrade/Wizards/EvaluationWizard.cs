@@ -82,7 +82,10 @@ namespace ConjureGrade.Wizards
 
         protected void SetPointsEarnedAllScores()
         {
-            Evaluation.PointsEarned = Evaluation.Scores.Sum(s => s.PointsEarned);
+            if ((Evaluation.Scores != null || Evaluation.Scores.Count() != 0))
+            {
+                Evaluation.PointsEarned = Evaluation.Scores.Sum(s => s.PointsEarned);
+            }
         }
 
         protected void SetGradeOverall()
@@ -103,19 +106,23 @@ namespace ConjureGrade.Wizards
 
         protected void SetPointsEarnedAfterDroppingLowest()
         {
-            var adjustedScoreList = Evaluation.Scores.ToList();
 
-            for (int i = 0; i < Evaluation.DropLowestCount; i++)
+            if ((Evaluation.Scores != null || Evaluation.Scores.Count() != 0))
             {
-                var lowestScore = adjustedScoreList.Min(s => s.PointsEarned);
 
-                var scoreToRemove = Evaluation.Scores.Where(s => s.PointsEarned == lowestScore).FirstOrDefault();
+                var adjustedScoreList = Evaluation.Scores.ToList();
 
-                adjustedScoreList.Remove(scoreToRemove);
+                for (int i = 0; i < Evaluation.DropLowestCount; i++)
+                {
+                    var lowestScore = adjustedScoreList.Min(s => s.PointsEarned);
+
+                    var scoreToRemove = Evaluation.Scores.Where(s => s.PointsEarned == lowestScore).FirstOrDefault();
+
+                    adjustedScoreList.Remove(scoreToRemove);
+                }
+
+                Evaluation.PointsEarned = adjustedScoreList.Sum(s => s.PointsEarned);
             }
-
-            Evaluation.PointsEarned = adjustedScoreList.Sum(s => s.PointsEarned);
-            
         }
         
     }
