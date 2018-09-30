@@ -7,7 +7,7 @@ namespace ConjureGrade.Spells
         /// <summary>
         /// List of graded Evaluations in the Course
         /// </summary>
-        List<EvaluationResult> Evaluations { get; set; }
+        IEnumerable<IEvaluationResult> Evaluations { get; set; }
         
         /// <summary>
         /// The grade out of all completed assignments as a decimal rounded to 2 places

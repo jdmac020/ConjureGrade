@@ -10,7 +10,15 @@ namespace ConjureGrade.Wizards
     /// </summary>
     public class EvaluationWizard : IEvaluationWizard
     {
-        public EvaluationResult Evaluation { get; set; }
+        public double OverallGradeFriendly { get { return Evaluation.GradeOverallFriendly; } }
+
+        public double OverallGradeRaw { get { return Evaluation.GradeOverallRaw; } }
+
+        public double ToDateGradeFriendly { get { return Evaluation.GradeToDateFriendly; } }
+
+        public double ToDateGradeRaw { get { return Evaluation.GradeToDateRaw; } }
+
+        public IEvaluationResult Evaluation { get; set; }
 
         /// <summary>
         /// Updates both the grade based on assignments taken and assignments planned
@@ -58,13 +66,13 @@ namespace ConjureGrade.Wizards
 
             if (Evaluation.DropLowest == false)
             {
-                Evaluation.PointsPossibleToDate = Evaluation.Scores.Count * Evaluation.PointValuePerScore;
+                Evaluation.PointsPossibleToDate = Evaluation.Scores.Count() * Evaluation.PointValuePerScore;
 
                 SetPointsEarnedAllScores();
             }
             else
             {
-                Evaluation.PointsPossibleToDate = (Evaluation.Scores.Count - Evaluation.DropLowestCount) * Evaluation.PointValuePerScore;
+                Evaluation.PointsPossibleToDate = (Evaluation.Scores.Count() - Evaluation.DropLowestCount) * Evaluation.PointValuePerScore;
 
                 SetPointsEarnedAfterDroppingLowest();
             }
@@ -95,11 +103,11 @@ namespace ConjureGrade.Wizards
 
         protected void SetPointsEarnedAfterDroppingLowest()
         {
-            var adjustedScoreList = Evaluation.Scores;
+            var adjustedScoreList = Evaluation.Scores.ToList();
 
             for (int i = 0; i < Evaluation.DropLowestCount; i++)
             {
-                var lowestScore = Evaluation.Scores.Min(s => s.PointsEarned);
+                var lowestScore = adjustedScoreList.Min(s => s.PointsEarned);
 
                 var scoreToRemove = Evaluation.Scores.Where(s => s.PointsEarned == lowestScore).FirstOrDefault();
 
